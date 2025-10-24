@@ -1,0 +1,9 @@
+#!/bin/bash
+WATCH_DIR="/"
+LOG_FILE="/clamav-watch.log"
+
+inotifywait -m -r -e create -e modify -e move "$WATCH_DIR" --format '%w%f' | while read FILE
+do
+    echo "$(date): Checking $FILE" >> "$LOG_FILE"
+    clamdscan --move=/quarantine "$FILE" >> "$LOG_FILE" 2>&1
+done
