@@ -3,8 +3,7 @@ belirli domaine ait sub-domainleri bulmak için kullandığım komut
 
 
 sitedeki gizli dizinleri bulmak için kullandığım komut
-└─$ ffuf -u "http://nahamstore.thm" -w /usr/share/wordlists/SecLists-master/Discovery/DNS/subdomains-top1million-20000.txt -H "HOST: FUZZ.nahamstore.thm" -ac gobuster dir -u "http://nahamstore.thm" -w /usr/share/wordlists/dirb/big.txt -t 64 -r
-
+└─$ gobuster dir -u "http://nahamstore.thm" -w /usr/share/wordlists/dirb/big.txt -t 64 -r
 
 sub-domainlere ait gizli dizinlerini bulmak için kullandığım komut
 └─$ ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://stock.nahamstore.thm/FUZZ -mc 200,301,302
